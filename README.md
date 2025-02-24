@@ -17,5 +17,5 @@ This repository contains supplementary materials for the paper:
 To run the code, install the following dependencies:
 ```bash
 pip install numpy mdtraj networkx
-
-# More comments and instructions will be added later
+```
+### **More comments and instructions will be added later.**

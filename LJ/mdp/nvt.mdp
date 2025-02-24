@@ -1,0 +1,33 @@
+comm-mode                = Linear
+nstcomm                  = 10
+
+integrator              = md        ; leap-frog integrator
+nsteps                  = 200000    ; 2 * 1000000 = 20000 ps 
+dt                      = 0.001     ; 2 fs
+
+nstxout                 = 0         ; suppress bulky .trr file by specifying 
+nstvout                 = 0         ; 0 for output frequency of nstxout,
+nstfout                 = 0         ; nstvout, and nstfout
+nstenergy               = 0      ; save energies every 10.0 ps
+nstlog                  = 1000      ; update log file every 10.0 ps
+nstxout-compressed      = 0      ; save compressed coordinates every 10.0 ps
+compressed-x-grps       = System    ; save the whole system
+
+gen-vel                 = yes
+
+cutoff-scheme           = Verlet    ; Buffered neighbor searching
+ns_type                 = grid      ; search neighboring grid cells
+nstlist                 = 10        ; 20 fs, largely irrelevant with Verlet scheme
+rcoulomb                = 30       ; short-range electrostatic cutoff (in nm)
+rvdw                    = 30       ; short-range van der Waals cutoff (in nm)
+rlist                   = 30
+
+vdwtype                  = cut-off
+
+tcoupl                  = V-rescale
+tc-grps                 = system   
+tau_t                   = 0.001 
+ref_t                   = 298.15   
+
+pbc                     = xyz       ; 3-D PBC
+

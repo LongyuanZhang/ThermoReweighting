@@ -1,0 +1,49 @@
+comm-mode                = Linear
+nstcomm                  = 10
+
+integrator              = md        ; leap-frog integrator
+nsteps                  = 200000    ; 2 * 1000000 = 20000 ps 
+dt                      = 0.002     ; 2 fs
+
+nstxout                 = 0         ; suppress bulky .trr file by specifying 
+nstvout                 = 0         ; 0 for output frequency of nstxout,
+nstfout                 = 0         ; nstvout, and nstfout
+nstenergy               = 1000      ; save energies every 10.0 ps
+nstlog                  = 1000      ; update log file every 10.0 ps
+nstxout-compressed      = 1000      ; save compressed coordinates every 10.0 ps
+compressed-x-grps       = System    ; save the whole system
+
+gen-vel                 = yes
+constraint_algorithm    = lincs     ; holonomic constraints 
+constraints             = h-bonds   ; bonds involving H are constrained
+lincs_iter              = 1         ; accuracy of LINCS
+lincs_order             = 4         ; also related to accuracy
+
+cutoff-scheme           = Verlet    ; Buffered neighbor searching
+ns_type                 = grid      ; search neighboring grid cells
+nstlist                 = 10        ; 20 fs, largely irrelevant with Verlet scheme
+rcoulomb                = 1.0       ; short-range electrostatic cutoff (in nm)
+rvdw                    = 1.0       ; short-range van der Waals cutoff (in nm)
+rlist                   = 1.0
+
+coulombtype             = PME       ; Particle Mesh Ewald for long-range electrostatics
+vdwtype                  = cut-off
+;lj-pme-comb-rule         = Lorentz-Berthelot
+pme_order                = 5         ; cubic interpolation
+fourierspacing           = 0.13      ; grid spacing for FFT
+
+tcoupl                  = V-rescale           ; modified Berendsen thermostat
+tc-grps                 = system                ; two coupling groups - more accurate
+tau_t                   = 1                     ; time constant, in ps
+ref_t                   = 298.15                  ; reference temperature, one for each group, in K
+
+pbc                     = xyz       ; 3-D PBC
+
+;Pressure coupling is on
+pcoupl                  = C-rescale     ; Pressure coupling on in NPT
+pcoupltype              = isotropic             ; uniform scaling of box vectors
+nstpcouple              = 100
+tau_p                   = 5                   ; time constant, in ps
+ref_p                   = 1.01325               ; reference pressure, in bar
+compressibility         = 4.5e-5                ; isothermal compressibility of water, bar^-1
+

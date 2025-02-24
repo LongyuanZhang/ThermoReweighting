@@ -11,6 +11,7 @@ This repository contains supplementary materials for the paper:
 - `2D_toy_model` - Python scripts for running simulations and analyses of the 2D toy model.
 - `LJ` - Python and C++ scripts for running simulations and analyses of the LJ clusters model.
 - `NaCl` - Python and C++ scripts for running simulations and analyses of the NaCl clusters model.
+- `README.md` - This file.
 
 ## **Requirements**
 To run the code, install the following dependencies:
